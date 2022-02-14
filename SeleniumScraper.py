@@ -16,7 +16,7 @@ x = 1
 
 # opens chrome
 driver = webdriver.Chrome("chromedriver.exe")
-driver.get("https://www.spreadshirt.com/shop/user/qe-design/clothing/t-shirts/?sort=0")
+driver.get("https://www.spreadshirt.com/shop/user/racoon/clothing/t-shirts/?sort=0")
 
 # first time requires exiting popus
 sleep(5)
@@ -77,7 +77,7 @@ def navigate(x):
 def downloadImage(x):
     #driver.refresh()
     #sleep(3)
-    driver.execute_script("window.scrollBy(0, 2000);")
+    driver.execute_script("window.scrollBy(0, 2300);")
     sleep(4)
     try:
         driver.find_element_by_xpath("""//*[@id="navigation"]/div/div[2]/div[2]/div[1]""").click()
@@ -90,7 +90,7 @@ def downloadImage(x):
         print("hittade inte promo")
     sleep(2)
     try:
-        driver.find_element_by_xpath("""//*[@id="designerSection"]/div[1]/button""").click()
+        driver.find_element_by_xpath("""//*[@id="pdp-designer-accordion"]/button""").click()
         print("hittade +")
     except NoSuchElementException:
         print("hittade inte +")
@@ -99,7 +99,7 @@ def downloadImage(x):
     except ElementClickInterceptedException:
         print("hittade inte +")
     sleep(2)
-    img = driver.find_element_by_xpath("""//*[@id="design-info"]/img""")
+    img = driver.find_element_by_xpath("""//*[@id="pdp-designer-section"]/div/pdp-design-info/img""")
     #sleep(3)
     src = img.get_attribute('src')
     name = random.randrange(1, 100000)
